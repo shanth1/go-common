@@ -23,6 +23,8 @@ func LoadIntoStruct(envPath string, cfgPtr interface{}) error {
 		if err := godotenv.Load(envPath); err != nil {
 			return fmt.Errorf("read env file: %w", err)
 		}
+	} else {
+		_ = godotenv.Load()
 	}
 
 	if err := cleanenv.ReadEnv(cfgPtr); err != nil {
